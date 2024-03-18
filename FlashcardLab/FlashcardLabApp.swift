@@ -15,6 +15,8 @@ struct FlashcardLabApp: App {
         // The WindowGroup represents the main window of the app.
         WindowGroup {
             ContentView()
+//            CardView()
+            CardView(card: Card(question: "Your question here", answer: "Your answer here"))
             // ContentView is the main view or the root view of the app.
             // This is where you start defining the structure and content of your app's user interface.
         }

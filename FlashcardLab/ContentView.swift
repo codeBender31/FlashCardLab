@@ -8,8 +8,33 @@
 import SwiftUI
 // Define the ContentView structure, which conforms to the View protocol
 struct ContentView: View {
+    @State private var cards: [Card] = Card.mockedCards
     var body: some View {
-    // Vertical stack (VStack) to arrange views vertically
+        
+        // Card deck
+        //Loop to iterate through card deck in cardView
+            ZStack {
+                ForEach(0..<cards.count, id: \.self) { index in
+                    CardView(card: cards[index], onSwipedLeft: { // <-- Add swiped left property
+                        cards.remove(at: index) // <-- Remove the card from the cards array
+                    }, onSwipedRight: { // <-- Add swiped right property
+                        cards.remove(at: index) // <-- Remove the card from the cards array
+                    })
+                    CardView(card: cards[index]).rotationEffect(.degrees(Double(cards.count - 1 - index) * -5))
+                }
+            }
+       
+        
+        
+    }
+}
+// Preview the ContentView in the canvas
+#Preview {
+    ContentView()
+}
+
+//Starter Code for reference on how SwiftUI works
+// Vertical stack (VStack) to arrange views vertically
 //        VStack {
 //            // Image view with the system's globe icon
 //            Image(systemName: "dog")
@@ -19,27 +44,3 @@ struct ContentView: View {
 //            Text("Hello, world! \nIt is very exciting to learn SwiftUI!")
 //        }
 //        .padding() // Apply padding to the entire VStack
-        
-
-//Wrap in a Z stack to display card body
-    ZStack{
-        //Specify card body
-        RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/).fill(Color.blue.gradient)
-        //Wrap current card Text in a VStack and add another Text above
-        VStack(spacing: 20){
-            //Add another text
-            Text("Question").bold()
-        //Separator
-            Rectangle().frame(height: 1)
-        
-            //Card Text
-        Text("Located at the southern end of the Puget Sound, what is the capitol of Washington?")
-            
-        }.font(.title).foregroundStyle(.white).padding().shadow(color: .black, radius: 4, x: -2, y: 2)
-    }.frame(width: 300, height: 500)
-    }
-}
-// Preview the ContentView in the canvas
-#Preview {
-    ContentView()
-}
