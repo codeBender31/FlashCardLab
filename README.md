@@ -4,7 +4,7 @@ platform for creating and studying flashcards. This project has been an exciting
 journey, offering invaluable learning experiences in app development with SwiftUI.
 
 ## Demo:
-![Demo](/Users/bender/Desktop/CodePath Labs/FlashcardLab/FlashcardLab/FlashcardLab.gif)
+[Demo](https://github.com/codeBender31/FlashCardLab/blob/main/FlashcardLab/FlashcardLab.gif)
 
 ## Content View
 The ContentView file serves as the central component of the app, orchestrating the
