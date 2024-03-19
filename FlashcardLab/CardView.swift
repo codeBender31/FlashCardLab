@@ -19,28 +19,29 @@ struct CardView: View {
     
     var body: some View {
         // Another Z Stack for the background
-        ZStack {
-            // Back-most card background
-            RoundedRectangle(cornerRadius: 25.0)
-                .fill(offset.width < 0 ? Color.red : Color.green) // <-- Set fill based on offset (swipe left vs right)
+        //ZStack {
+
                 
 //            // Front-most card background (i.e. original background)
 //                RoundedRectangle(cornerRadius: 25.0)
 //                    .fill(isShowingQuestion ? Color.blue.gradient : Color.indigo.gradient)
 //                    .shadow(color: .black, radius: 4, x: -2, y: 2)
 //                    .opacity(Double(1 - abs(offset.width) / swipeThreshold)) // Convert the result of the subtraction to Double
-            // Front-most card background (i.e. original background)
-            RoundedRectangle(cornerRadius: 25.0)
-                .fill(isShowingQuestion ? Color.blue.gradient: Color.indigo.gradient)
-                .shadow(color: .black, radius: 4, x: -2, y: 2)
-                .opacity(CGFloat(1 - abs(offset.width) / swipeThreshold))
- // <-- Fade out front-most background as user swipes
-                .offset(CGSize(width: offset.width, height: 0))
-                .rotationEffect(.degrees(Double(offset.width / 20.0))) // <-- Add rotation when swiping
-            
+           // <-- Add rotation when swiping
+            // <-- Fade out front-most background as user swipes
             //Wrap in a Z stack to display card body
             ZStack {
-//                // Specify card body
+                             //Back-most card background
+                            RoundedRectangle(cornerRadius: 25.0)
+                                .fill(offset.width < 0 ? Color.red : Color.green) // <-- Set fill based on offset (swipe left vs right)
+                // Front-most card background (i.e. original background)
+                RoundedRectangle(cornerRadius: 25.0)
+                    .fill(isShowingQuestion ? Color.blue.gradient: Color.indigo.gradient)
+                    .shadow(color: .black, radius: 4, x: -2, y: 2)
+                    .opacity(CGFloat(1 - abs(offset.width) / swipeThreshold))
+                    .offset(CGSize(width: offset.width, height: 0))
+                    .rotationEffect(.degrees(Double(offset.width / 20.0)))
+////                // Specify card body
 //                RoundedRectangle(cornerRadius: 25.0)
 //                    .fill(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing))
                 
@@ -88,7 +89,7 @@ struct CardView: View {
         }/*.animation(.bouncy, value: cards)*/
         //Background closing brace
     }//Body Closing brace
-}//struct closing brace
+//}//struct closing brace
 
 #Preview {
     CardView(card: Card (

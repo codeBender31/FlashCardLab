@@ -22,7 +22,7 @@ struct ContentView: View {
                     })
                     CardView(card: cards[index]).rotationEffect(.degrees(Double(cards.count - 1 - index) * -5))
                 }
-            }
+            }.animation(.bouncy, value: cards)
        
         
         
